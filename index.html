@@ -1,0 +1,100 @@
+
+<style>
+        .wrapper {
+            display: flex;
+            width: 270px;
+            margin: 100px auto;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 30px;
+            border-radius: 0%;
+    
+        }
+        div {
+            border: 1px #000 solid;
+            margin-top: 10px;
+            border-radius: 50%;
+        }
+        img {
+            width: 67px;
+            height: 67px;
+            visibility: hidden;
+            border-radius: 50%;
+        }
+        .active {
+            visibility: visible;
+        }
+        .counter {
+            border-radius: 0%;
+            width: 20px;
+            margin: 0 auto;
+            color: red;
+            padding: 7px;
+            border: 1.5px solid #000;
+        }
+</style>
+
+<div class="wrapper">
+    <div>
+        <img src="image.jpg" class="active">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+    <div>
+        <img src="image.jpg">
+    </div>
+</div>
+<div class="counter">0</div>
+<audio src="cougar.wav"></audio>
+
+
+<script>
+
+    // выполняй каждую секунду (1000мс) переданную тебе функцию
+    window.setInterval( function() {
+        
+        // документ находит нам активную картинку и мы записываем её в переменную activeImg
+        let activeImg = document.querySelector(".active");
+        // берем картинку и меняем ей атрибут на пустоту
+        activeImg.className = ' ';
+        // документ, дай мне ВСЕ картирки и запиши их в переменную images
+        let images = document.querySelectorAll("img");
+        let randomImage = images[Math.floor(Math.random() * 9)];
+        randomImage.src = "image.jpg";
+        randomImage.className = 'active';
+
+        let audio = document.querySelector("audio");
+        audio.pause();
+        
+        let counter = document.querySelector(".counter")
+
+        randomImage.onclick = function (){
+            audio.currentTime = 0;
+            audio.play();
+            counter.innerHTML = Number(counter.innerHTML) + 1;
+            randomImage.src = "image2.jpg";
+        }
+
+    }, 500);
+
+</script>
+
